@@ -6,62 +6,11 @@
 //
 
 import Combine
+import ComposableArchitecture
+import FavoritePrimes
+import Counter
+import PrimeModal
 import SwiftUI
-
-/*
- Now if we form something like:
-
- Store<AppState>
- 
- We will get an observable object that notifies that something changed as soon as any mutation is made to `AppState`.
- And doing that we will see changes for all struct not just for one property
- 
- Better to rename Value to the State!
- */
-final class Store<Value, Action>: ObservableObject {
-    let reducer: (inout Value, Action) -> Void
-    @Published private(set) var value: Value
-    
-    init(initialValue: Value, reducer: @escaping (inout Value, Action) -> Void) {
-        self.reducer = reducer
-        self.value = initialValue
-    }
-    
-    func send(_ action: Action) {
-        reducer(&value, action)
-    }
-}
-
-// MARK: - STORE
-/// Combine method: combine list of reducers
-/// will work the same like Combine method for 2 reducers
-func combine<Value, Action>(
-    _ reducers: (inout Value, Action) -> Void...
-) -> (inout Value, Action) -> Void {
-    return { value, action in
-        for reducer in reducers {
-            reducer(&value, action)
-        }
-    }
-}
-
-/// Pullback method:
-/// we want to take a reducer on a small piece of substate and transform it into a reducer that works on global state, of which the substate embeds inside it.
-/// `Function` that can transform a reducer on local state into one on global state
-///
-/// problem of this func that GlobalValue won't be changed back
-
-/// Main Pullback Method with GlobalState and GlobalAction to work with local state and local action
-func pullback<GlobalValue, LocalValue, GlobalAction, LocalAction>(
-    _ reducer: @escaping (inout LocalValue, LocalAction) -> Void,
-    value: WritableKeyPath<GlobalValue, LocalValue>,
-    action: WritableKeyPath<GlobalAction, LocalAction?>
-) -> (inout GlobalValue, GlobalAction) -> Void {
-    return { globalValue, globalAction in
-        guard let localAction = globalAction[keyPath: action] else { return }
-        reducer(&globalValue[keyPath: value], localAction)
-    }
-}
 
 // MARK: - STATE
 // AppState as a struct
@@ -88,21 +37,19 @@ struct AppState {
     }
 }
 
+extension AppState {
+    var primeModal: PrimeModalState {
+        get {
+            .init(count: self.count, favoritePrimes: self.favoritePrimes)
+        }
+        set {
+            self.count = newValue.count
+            self.favoritePrimes = newValue.favoritePrimes
+        }
+    }
+}
+
 // Actions
-enum CounterAction {
-    case decrTapped
-    case incrTapped
-}
-
-enum PrimeModalAction {
-    case saveFavoritePrimeTapped
-    case removeFavoritePrimeTapped
-}
-
-enum FavoritePrimesAction {
-    case deleteFavoritePrime(IndexSet)
-}
-
 enum AppAction {
     case counter(CounterAction)
     case primeModal(PrimeModalAction)
@@ -138,37 +85,6 @@ enum AppAction {
         set {
             guard case .favoritePrime = self, let newValue = newValue else { return }
             self = .favoritePrime(newValue)
-        }
-    }
-}
-
-// MARK: - new reducer, handler reducers using combine method
-
-// counter reducer
-func counterReducer(state: inout Int, action: CounterAction) {
-    switch action {
-    case .decrTapped: state -= 1
-    case .incrTapped: state += 1
-    }
-}
-
-// prime reducer
-func primeModalReducer(state: inout AppState, action: PrimeModalAction) {
-    switch action {
-    case .saveFavoritePrimeTapped:
-        state.favoritePrimes.append(state.count)
-        
-    case .removeFavoritePrimeTapped:
-        state.favoritePrimes.removeAll(where: { $0 == state.count })
-    }
-}
-
-// favoritePtime reducer
-func favoritePrimesReducer(state: inout [Int], action: FavoritePrimesAction) {
-    switch action {
-    case let .deleteFavoritePrime(indexSet):
-        for index in indexSet {
-            state.remove(at: index)
         }
     }
 }
@@ -211,24 +127,9 @@ func activityFeed(
     }
 }
 
-
-/// Logging Method
-/// takes reducer and print action and state as a log
-func logging(
-    _ reducer: @escaping(inout AppState, AppAction) -> Void
-) -> (inout AppState, AppAction) -> Void {
-    return { value, action in
-        reducer(&value, action)
-        print("Action: \(action)")
-        print("State: ", value)
-        dump(value)
-        print("---")
-    }
-}
-
 let _appReducer: (inout AppState, AppAction) -> Void = combine(
     pullback(counterReducer, value: \.count, action: \.counter),
-    pullback(primeModalReducer, value: \.self, action: \.primeModal),
+    pullback(primeModalReducer, value: \.primeModal, action: \.primeModal),
     pullback(favoritePrimesReducer, value: \.favoritePrimes, action: \.favoritePrime)
 )
 
