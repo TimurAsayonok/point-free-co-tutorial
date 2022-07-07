@@ -10,6 +10,14 @@ public enum FavoritePrimesAction {
     case deleteFavoritePrime(IndexSet)
 }
 
+public struct FavoritePrimesState {
+    public let favoritePrimes: [Int]
+    
+    public init(favoritePrimes: [Int]) {
+        self.favoritePrimes = favoritePrimes
+    }s
+}
+
 // favoritePtime reducer
 public func favoritePrimesReducer(state: inout [Int], action: FavoritePrimesAction) {
     switch action {

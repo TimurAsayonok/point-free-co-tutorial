@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F720C4DA2876B22200298A1C /* FavoritePrimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F720C4D92876B22200298A1C /* FavoritePrimesView.swift */; };
 		F75564D7286AD2B300FF80EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75564D6286AD2B300FF80EA /* AppDelegate.swift */; };
 		F75564D9286AD2B300FF80EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75564D8286AD2B300FF80EA /* SceneDelegate.swift */; };
 		F75564DB286AD2B300FF80EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75564DA286AD2B300FF80EA /* ViewController.swift */; };
@@ -167,6 +168,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F720C4D92876B22200298A1C /* FavoritePrimesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePrimesView.swift; sourceTree = "<group>"; };
 		F75564D3286AD2B300FF80EA /* StateManagment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StateManagment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75564D6286AD2B300FF80EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F75564D8286AD2B300FF80EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		F789BDB1286CDAAE0011C290 /* FavoritePrimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePrimes.swift; sourceTree = "<group>"; };
 		F789BDB3286CDDB40011C290 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		F789BDB5286CDE840011C290 /* PrimeModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeModal.swift; sourceTree = "<group>"; };
+		F7B65FBC28740F3C002D2AE3 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,9 +300,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F720C4D82876B0B700298A1C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F720C4D92876B22200298A1C /* FavoritePrimesView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F75564CA286AD2B300FF80EA = {
 			isa = PBXGroup;
 			children = (
+				F7B65FBC28740F3C002D2AE3 /* MyPlayground.playground */,
 				F75564D5286AD2B300FF80EA /* StateManagment */,
 				F75564EC286AD2B500FF80EA /* StateManagmentTests */,
 				F75564F6286AD2B500FF80EA /* StateManagmentUITests */,
@@ -336,6 +348,7 @@
 		F75564D5286AD2B300FF80EA /* StateManagment */ = {
 			isa = PBXGroup;
 			children = (
+				F720C4D82876B0B700298A1C /* Views */,
 				F75564D6286AD2B300FF80EA /* AppDelegate.swift */,
 				F75564D8286AD2B300FF80EA /* SceneDelegate.swift */,
 				F75564DA286AD2B300FF80EA /* ViewController.swift */,
@@ -849,6 +862,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F720C4DA2876B22200298A1C /* FavoritePrimesView.swift in Sources */,
 				F75564DB286AD2B300FF80EA /* ViewController.swift in Sources */,
 				F75564D7286AD2B300FF80EA /* AppDelegate.swift in Sources */,
 				F7556507286AD2DA00FF80EA /* ContentView.swift in Sources */,

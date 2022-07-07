@@ -150,7 +150,7 @@ struct ContentView: View {
                         .navigationTitle(Text("Counter demo"))
                 }
                 NavigationLink("Favorite Primes") {
-                    FavoritePrimesView(store: self.store)
+                    FavoritePrimesView(store: self.store.view { .init(favoritePrimes: $0.favoritePrimes) })
                         .navigationTitle(Text("Favorite Primes"))
                 }
             }
@@ -234,16 +234,5 @@ struct PrimeModalView: View {
             }
         }
 
-    }
-}
-
-struct FavoritePrimesView: View {
-    @ObservedObject var store: Store<AppState, AppAction>
-    
-    var body: some View {
-        List {
-            ForEach(store.value.favoritePrimes, id: \.self) { number in Text("\(number)") }
-            .onDelete { indexSet in store.send(.favoritePrime(.deleteFavoritePrime(indexSet))) }
-        }
     }
 }
