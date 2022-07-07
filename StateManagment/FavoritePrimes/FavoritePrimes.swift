@@ -15,7 +15,7 @@ public struct FavoritePrimesState {
     
     public init(favoritePrimes: [Int]) {
         self.favoritePrimes = favoritePrimes
-    }s
+    }
 }
 
 // favoritePtime reducer

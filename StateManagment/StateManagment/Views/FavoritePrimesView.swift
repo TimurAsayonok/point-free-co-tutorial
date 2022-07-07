@@ -5,11 +5,10 @@
 //  Created by Timur Asayonok on 07/07/2022.
 //
 
-import Foundation
-import FavoritePrimes
-import ComposableArchitecture
 import SwiftUI
 import Combine
+import FavoritePrimes
+import ComposableArchitecture
 
 struct FavoritePrimesView: View {
     @ObservedObject var store: Store<FavoritePrimesState, AppAction>
