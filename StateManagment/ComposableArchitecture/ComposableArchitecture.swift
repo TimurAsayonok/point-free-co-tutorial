@@ -51,6 +51,19 @@ public final class Store<Value, Action>: ObservableObject {
         return localStore
     }
     
+    // view into the store
+    public func view<LocalAction>(
+        _ f: @escaping (LocalAction) -> Action
+    ) -> Store<Value, LocalAction> {
+        return Store<Value, LocalAction>(
+            initialValue: self.value,
+            reducer: { value, localAction in
+                self.send(f(localAction))
+                value = self.value
+            }
+        )
+    }
+    
 //
 //    func transform<A, B, Action>(
 //      _ reducer: (A, Action) -> A,
