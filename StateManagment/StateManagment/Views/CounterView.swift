@@ -45,9 +45,10 @@ struct CounterView: View {
             isPresented: $isPrimeModalShown,
             onDismiss: { self.isPrimeModalShown = false }
         ) {
-            PrimeModalView(store: self.store.view {
-                .init(count: $0.count, favoritePrimes: $0.favoritePrimes)
-            })
+            PrimeModalView(store: self.store.view(
+                value: { .init(count: $0.count, favoritePrimes: $0.favoritePrimes) },
+                action: { $0 }
+            ))
         }
         .alert(item: $alertNthPrime) { number in
             Alert(title: Text("The \(ordinal(self.store.value.count)) prime is \(number.value)"), dismissButton: .default(Text("Ok")))
