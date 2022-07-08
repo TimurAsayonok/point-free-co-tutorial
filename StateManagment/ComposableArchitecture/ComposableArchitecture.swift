@@ -32,6 +32,28 @@ public final class Store<Value, Action>: ObservableObject {
         reducer(&value, action)
     }
     
+    // main view method for getting store with LocalValue and LocalAction
+    public func view<LocalValue, LocalAction>(
+        value toLocalValue: @escaping (Value) -> LocalValue,
+        action toGlobalAction: @escaping (LocalAction) -> Action
+    ) -> Store<LocalValue, LocalAction> {
+        let localStore = Store<LocalValue, LocalAction>(
+            initialValue: toLocalValue(self.value),
+            reducer: { localValue, localAction in
+                self.send(toGlobalAction(localAction))
+                localValue = toLocalValue(self.value)
+            }
+        )
+        
+        // sink method, which takes a callback closure that is invoked whenever a new value comes in
+        localStore.cancellable = self.$value.sink { [weak localStore] newValue in
+            localStore?.value = toLocalValue(newValue)
+        }
+        
+        return localStore
+    }
+    
+    // just view that returns Store with localValue
     public func view<LocalValue>(
         _ f: @escaping (Value) -> LocalValue
     ) -> Store<LocalValue, Action> {
@@ -51,7 +73,7 @@ public final class Store<Value, Action>: ObservableObject {
         return localStore
     }
     
-    // view into the store
+    // view into the store that returns Store with localAction
     public func view<LocalAction>(
         _ f: @escaping (LocalAction) -> Action
     ) -> Store<Value, LocalAction> {
