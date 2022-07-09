@@ -13,16 +13,6 @@ func ordinal(_ number: Int) -> String {
     return formatter.string(for: number) ?? ""
 }
 
-func isPrime(_ number: Int) -> Bool {
-    if number <= 1 { return false }
-    if number <= 3 { return true }
-    for index in 2...Int(sqrtf(Float(number))) {
-        if number % index == 0 { return false }
-    }
-    
-    return true
-}
-
 struct WolframAlphaResponse: Decodable {
     let queryresult: QueryResult
     

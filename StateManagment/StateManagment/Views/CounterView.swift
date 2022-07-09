@@ -8,6 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 import Counter
+import PrimeModal
 
 struct CounterView: View {
     // state
@@ -47,7 +48,7 @@ struct CounterView: View {
         ) {
             PrimeModalView(store: self.store.view(
                 value: { .init(count: $0.count, favoritePrimes: $0.favoritePrimes) },
-                action: { $0 }
+                action: { .primeModal($0) }
             ))
         }
         .alert(item: $alertNthPrime) { number in
