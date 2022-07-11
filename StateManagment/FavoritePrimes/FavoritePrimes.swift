@@ -11,15 +11,15 @@ import ComposableArchitecture
 
 // View
 public struct FavoritePrimesView: View {
-    @ObservedObject var store: Store<FavoritePrimesState, FavoritePrimesAction>
+    @ObservedObject var store: Store<[Int], FavoritePrimesAction>
     
-    public init(store: Store<FavoritePrimesState, FavoritePrimesAction>) {
+    public init(store: Store<[Int], FavoritePrimesAction>) {
         self.store = store
     }
     
     public var body: some View {
         List {
-            ForEach(store.value.favoritePrimes, id: \.self) { number in Text("\(number)") }
+            ForEach(store.value, id: \.self) { number in Text("\(number)") }
             .onDelete { indexSet in store.send(.deleteFavoritePrime(indexSet)) }
         }
     }
@@ -31,13 +31,13 @@ public enum FavoritePrimesAction {
 }
 
 // State
-public struct FavoritePrimesState {
-    public let favoritePrimes: [Int]
-    
-    public init(favoritePrimes: [Int]) {
-        self.favoritePrimes = favoritePrimes
-    }
-}
+//public struct FavoritePrimesState {
+//    public var favoritePrimes: [Int]
+//    
+//    public init(favoritePrimes: [Int]) {
+//        self.favoritePrimes = favoritePrimes
+//    }
+//}
 
 // Reducer
 public func favoritePrimesReducer(state: inout [Int], action: FavoritePrimesAction) {

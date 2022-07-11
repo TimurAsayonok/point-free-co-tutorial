@@ -157,7 +157,7 @@ struct ContentView: View {
                 }
                 NavigationLink("Favorite Primes") {
                     FavoritePrimesView(store: self.store.view(
-                        value: { .init(favoritePrimes: $0.favoritePrimes) },
+                        value: { $0.favoritePrimes },
                         action: { .favoritePrime($0) }
                     ))
                         .navigationTitle(Text("Favorite Primes"))
