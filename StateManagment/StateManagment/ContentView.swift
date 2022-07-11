@@ -135,8 +135,6 @@ let _appReducer: (inout AppState, AppAction) -> Void = combine(
 
 let appReducer = logging(_appReducer)
 
-
-
 // MARK: - View
 
 struct ContentView: View {
@@ -148,7 +146,12 @@ struct ContentView: View {
                 NavigationLink("Counter Demo") {
                     CounterView(store: self.store.view(
                         value: { .init(count: $0.count, favoritePrimes: $0.favoritePrimes) },
-                        action: { $0 }
+                        action: {
+                            switch $0 {
+                            case let .counter(counterAction): return AppAction.counter(counterAction)
+                            case let .primeModal(primeModalAction): return AppAction.primeModal(primeModalAction)
+                            }
+                        }
                     ))
                         .navigationTitle(Text("Counter demo"))
                 }

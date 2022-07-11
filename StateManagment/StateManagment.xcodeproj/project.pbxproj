@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F720C4DE2876B52C00298A1C /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F720C4DD2876B52C00298A1C /* CounterView.swift */; };
+		F713CD372879664F009D06D3 /* WolframAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = F713CD362879664F009D06D3 /* WolframAlpha.swift */; };
 		F75564D7286AD2B300FF80EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75564D6286AD2B300FF80EA /* AppDelegate.swift */; };
 		F75564D9286AD2B300FF80EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75564D8286AD2B300FF80EA /* SceneDelegate.swift */; };
 		F75564DB286AD2B300FF80EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75564DA286AD2B300FF80EA /* ViewController.swift */; };
@@ -18,7 +18,6 @@
 		F75564F8286AD2B500FF80EA /* StateManagmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75564F7286AD2B500FF80EA /* StateManagmentUITests.swift */; };
 		F75564FA286AD2B500FF80EA /* StateManagmentUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75564F9286AD2B500FF80EA /* StateManagmentUITestsLaunchTests.swift */; };
 		F7556507286AD2DA00FF80EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7556506286AD2DA00FF80EA /* ContentView.swift */; };
-		F7556509286AD5D600FF80EA /* WolframAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7556508286AD5D600FF80EA /* WolframAlpha.swift */; };
 		F789BD2F286CD5BA0011C290 /* Counter.docc in Sources */ = {isa = PBXBuildFile; fileRef = F789BD2E286CD5B90011C290 /* Counter.docc */; };
 		F789BD35286CD5BA0011C290 /* Counter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F789BD2B286CD5B90011C290 /* Counter.framework */; };
 		F789BD3C286CD5BA0011C290 /* CounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F789BD3B286CD5BA0011C290 /* CounterTests.swift */; };
@@ -168,7 +167,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F720C4DD2876B52C00298A1C /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
+		F713CD362879664F009D06D3 /* WolframAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WolframAlpha.swift; sourceTree = "<group>"; };
 		F75564D3286AD2B300FF80EA /* StateManagment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StateManagment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75564D6286AD2B300FF80EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F75564D8286AD2B300FF80EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -183,7 +182,6 @@
 		F75564F7286AD2B500FF80EA /* StateManagmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManagmentUITests.swift; sourceTree = "<group>"; };
 		F75564F9286AD2B500FF80EA /* StateManagmentUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManagmentUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F7556506286AD2DA00FF80EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		F7556508286AD5D600FF80EA /* WolframAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WolframAlpha.swift; sourceTree = "<group>"; };
 		F789BD2B286CD5B90011C290 /* Counter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Counter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F789BD2D286CD5B90011C290 /* Counter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Counter.h; sourceTree = "<group>"; };
 		F789BD2E286CD5B90011C290 /* Counter.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Counter.docc; sourceTree = "<group>"; };
@@ -300,12 +298,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F720C4D82876B0B700298A1C /* Views */ = {
+		F713CD3828796662009D06D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F720C4DD2876B52C00298A1C /* CounterView.swift */,
 			);
-			path = Views;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		F75564CA286AD2B300FF80EA = {
@@ -324,6 +321,7 @@
 				F789BD93286CD6820011C290 /* ComposableArchitecture */,
 				F789BDA1286CD6820011C290 /* ComposableArchitectureTests */,
 				F75564D4286AD2B300FF80EA /* Products */,
+				F713CD3828796662009D06D3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -348,12 +346,10 @@
 		F75564D5286AD2B300FF80EA /* StateManagment */ = {
 			isa = PBXGroup;
 			children = (
-				F720C4D82876B0B700298A1C /* Views */,
 				F75564D6286AD2B300FF80EA /* AppDelegate.swift */,
 				F75564D8286AD2B300FF80EA /* SceneDelegate.swift */,
 				F75564DA286AD2B300FF80EA /* ViewController.swift */,
 				F7556506286AD2DA00FF80EA /* ContentView.swift */,
-				F7556508286AD5D600FF80EA /* WolframAlpha.swift */,
 				F75564DC286AD2B400FF80EA /* Main.storyboard */,
 				F75564DF286AD2B500FF80EA /* Assets.xcassets */,
 				F75564E1286AD2B500FF80EA /* LaunchScreen.storyboard */,
@@ -385,6 +381,7 @@
 				F789BD2D286CD5B90011C290 /* Counter.h */,
 				F789BD2E286CD5B90011C290 /* Counter.docc */,
 				F789BDB3286CDDB40011C290 /* Counter.swift */,
+				F713CD362879664F009D06D3 /* WolframAlpha.swift */,
 			);
 			path = Counter;
 			sourceTree = "<group>";
@@ -866,8 +863,6 @@
 				F75564D7286AD2B300FF80EA /* AppDelegate.swift in Sources */,
 				F7556507286AD2DA00FF80EA /* ContentView.swift in Sources */,
 				F75564D9286AD2B300FF80EA /* SceneDelegate.swift in Sources */,
-				F7556509286AD5D600FF80EA /* WolframAlpha.swift in Sources */,
-				F720C4DE2876B52C00298A1C /* CounterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -892,6 +887,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F713CD372879664F009D06D3 /* WolframAlpha.swift in Sources */,
 				F789BDB4286CDDB40011C290 /* Counter.swift in Sources */,
 				F789BD2F286CD5BA0011C290 /* Counter.docc in Sources */,
 			);
